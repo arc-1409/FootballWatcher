@@ -141,8 +141,6 @@ async function main(command, obj, start) {
             if(obj.team === "Barcelona") {
                 const redWord = chalk.red("y visca");
                 const blueWord = chalk.blue("catalunya!");
-                const visca = figlet.textSync("Visca");
-                const barca = figlet.textSync("Barca!");
                 console.log(chalk.red(figlet.textSync("Visca", {horizontalLayout:"full"})));
                 console.log(chalk.blue(figlet.textSync("Barca", {horizontalLayout:"full"})));
                 console.log(`${redWord} ${blueWord}`); 
