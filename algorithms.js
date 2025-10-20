@@ -98,6 +98,8 @@ async function recentMatch(page, obj) {
         await page.goto(url, { waitUntil: "networkidle2"});
         const teams = await page.$$eval("tr[class*='CellsRow']", rows => {
             return rows.map(row => {
+                // select all <li> items per team; three possible class names
+                // https://github.com/puppeteer/puppeteer/issues/489 
                 const matches = row.querySelectorAll("div.ssrcss-86dwvw-LetterContainer, div.ssrcss-1xnub2-LetterContainer, div.ssrcss-1d0kmun-letterContainer")?.textContent.trim();
                 const raw = matches[5];
                 const result = resultList[raw];
