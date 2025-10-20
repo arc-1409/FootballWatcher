@@ -122,7 +122,7 @@ async function main(command, obj, start) {
     const horizontal = line.repeat(terminalWidth);
 
     console.log(horizontal);
-    console.log(chalk.yellow(figlet.textSync("FootballWatcher", {horizontalLayout:"full", font: "Star Wars"})) ); // font: https://www.figlet.org/examples.html
+    console.log(chalk.yellow(figlet.textSync("FootballWatcher", {horizontalLayout:"full", font: "Mini"})) ); // font: https://www.figlet.org/examples.html
     console.log(horizontal);
 
     try {
