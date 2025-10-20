@@ -133,7 +133,7 @@ async function main(command, obj, start) {
             await searchStanding(page, obj); // take object itself instead of property; good practise
             
             // easter egg; might move out of loop later
-            if(obj.team === "Tottenham Hostpur") {
+            if(obj.team === "Tottenham Hotspur") {
                 console.log("COYS!");
             }
 
