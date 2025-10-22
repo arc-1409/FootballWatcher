@@ -131,25 +131,25 @@ async function main(command, obj, start) {
     
         if (command === "search-standing") {
             await searchStanding(page, obj); // take object itself instead of property; good practise
-            
-            // easter egg; might move out of loop later
-            if(obj.team === "Tottenham Hotspur") {
-                console.log("COYS!");
-            }
-
-            if(obj.team === "Barcelona") {
-                const redWord = chalk.red("y visca");
-                const blueWord = chalk.blue("catalunya!");
-                console.log(chalk.red(figlet.textSync("Visca", {horizontalLayout:"full"})));
-                console.log(chalk.blue(figlet.textSync("Barca", {horizontalLayout:"full"})));
-                console.log(`${redWord} ${blueWord}`); 
-            }
-            if(obj.team === "Real Madrid") {
-                const yellowWord = chalk.yellow("Hala Madrid!");
-                console.log(`${yellowWord}`); 
-            }
         } else if (command === "recent-match") {
             await recentMatch(page, obj);
+        }
+
+        // easter egg; might move out of loop later
+        if(obj.team === "Tottenham Hotspur") {
+            console.log("COYS!");
+        }
+
+        if(obj.team === "Barcelona") {
+            const redWord = chalk.red("y visca");
+            const blueWord = chalk.blue("catalunya!");
+            console.log(chalk.red(figlet.textSync("Visca", {horizontalLayout:"full"})));
+            console.log(chalk.blue(figlet.textSync("Barca", {horizontalLayout:"full"})));
+            console.log(`${redWord} ${blueWord}`); 
+        }
+        if(obj.team === "Real Madrid") {
+            const yellowWord = chalk.yellow("Hala Madrid!");
+            console.log(`${yellowWord}`); 
         }
 
         console.log(horizontal);
