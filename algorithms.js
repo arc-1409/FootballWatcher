@@ -102,7 +102,7 @@ async function recentMatch(page, obj) {
                 // https://github.com/puppeteer/puppeteer/issues/489 
                 // documentation: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll 
                 const matches = row.querySelectorAll("div.ssrcss-86dwvw-LetterContainer, div.ssrcss-1xnub2-LetterContainer, div.ssrcss-1d0kmun-letterContainer");
-                const raw = matches[5];
+                const raw = matches[5]?.textContent?.trim();;
                 const result = resultList[raw];
 
                 // Try aria-hidden first, fallback to visually-hidden
