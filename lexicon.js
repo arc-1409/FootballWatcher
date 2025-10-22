@@ -75,7 +75,7 @@ const resultList = {
     W: "win",
     D: "draw",
     L: "lose"
-}
+};
 
 const positionList = {
     st: "striker",
