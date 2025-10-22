@@ -72,9 +72,9 @@ const teamList = {
 };
 
 const resultList = {
-    w: "win",
-    d: "draw",
-    l: "lose"
+    W: "win",
+    D: "draw",
+    L: "lose"
 }
 
 const positionList = {
