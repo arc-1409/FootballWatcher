@@ -80,18 +80,32 @@ async function recentMatch(page, obj) {
 
     let found = false;
 
-    if (found === false) {
+    // filter leagues
+    if(obj.league === "Premier League") {
+        await scrape("https://www.bbc.com/sport/football/premier-league/table", obj.league);
+    } else if (obj.league === "La Liga") {
+        await scrape("https://www.bbc.com/sport/football/spanish-la-liga/table", obj.league);
+    } else if (obj.league === "German Bundesliga") {
+        await scrape("https://www.bbc.com/sport/football/german-bundesliga/table", obj.league);
+    } else if (!obj.league) {  // for when league isn't specified, including undefined/""/doesn't exist. works better than !("league" in obj).
+        await scrape("https://www.bbc.com/sport/football/premier-league/table", "Premier League");
+        
+        // divide each goto into one per if statement to avoid clashing
+        if (found === false) {
             await timeout(500);        
             await scrape("https://www.bbc.com/sport/football/spanish-la-liga/table", "La Liga");
-    }
+        }
 
-    if (found === false) {
-        await timeout(500);
-        await scrape("https://www.bbc.com/sport/football/german-bundesliga/table", "German Bundesliga");
-    }
+        if (found === false) {
+            await timeout(500);
+            await scrape("https://www.bbc.com/sport/football/german-bundesliga/table", "German Bundesliga");
+        }
 
-    if (found === false) {
-        console.log(`${obj.team} isn't on Premier League, La Liga, or German Bundesliga.`);
+        if (found === false) {
+            console.log(`${obj.team} isn't on Premier League, La Liga, or German Bundesliga.`);
+        }
+    } else {
+        console.error("ERROR: unrecognized league name");
     }
 
     async function scrape(url, leagueResult) {
