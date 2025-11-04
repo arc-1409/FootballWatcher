@@ -63,26 +63,38 @@ program
 
 program 
     .description("search for most recent match's results and opponent")
-    .command("recent-match [team]")
+    .command("recent-match [team] [league]")
     .action((teamArg) => {
         let start = performance.now()
         const options = program.opts(); 
 
+        let targetLeague = leagueArg;
         let targetTeam = teamArg;
 
         if (options.team) {
             targetTeam = options.team;
         } 
 
+        if (options.league) {
+            targetLeague = options.league;
+        }
+
         if (!targetTeam || !(targetTeam in teamList)) {
             console.error("ERROR: please specify valid team name.");
             process.exit(1);
         }
 
+        if (targetLeague && !(targetLeague in leagueList)) {
+            console.error("ERROR: please specify valid league name or omit.");
+            process.exit(1);
+        }
+
+        const leagueName = leagueList[targetLeague];
         const teamName = teamList[targetTeam];
         
         const teamOnly = {
-            team: teamName
+            team: teamName,
+            league: leagueName
         }
         main("recent-match", teamOnly, start)
     });

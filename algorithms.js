@@ -119,8 +119,6 @@ async function recentMatch(page, obj) {
                 const raw = matches.item(5);
                 const result = resultList[raw];
                 
-                // Try aria-hidden first, fallback to visually-hidden
-                // fix 2: try visually-hidden, fallback to aria-hidden
                 let name = row.querySelector("span.visually-hidden")?.innerText.trim(); 
                 if (!name) {
                     name = row.querySelector("span[aria-hidden='true'][data-600]")?.getAttribute("data-600")?.trim();
