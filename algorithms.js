@@ -118,8 +118,8 @@ async function recentMatch(page, obj) {
                 // class: "visually-hidden ssrcss-1f39n02-VisuallyHidden e16en21z0"
                 // https://stackoverflow.com/questions/73251794/other-ways-to-pull-values-from-a-nodelist-of-html-elements 
                 const resultArray = [];
-                row.querySelectorAll("div.e1my5ar04 > span").forEach((el) => {
-                    resultArray.push(el.textContent.trim());
+                row.querySelectorAll("div.e1ey8v0w0 > span").forEach((el) => {
+                    resultArray.push(el.textContent);
                 });
 
                 let result = "win";
@@ -129,7 +129,7 @@ async function recentMatch(page, obj) {
                     result = 'draw';
                 }
                 
-                const test = resultArray[5];
+                const test = resultArray[0];
 
                 let name = row.querySelector("span.visually-hidden")?.innerText.trim(); 
                 if (!name) {
