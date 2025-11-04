@@ -3,8 +3,7 @@ import { resultList } from "./lexicon.js";
 
 /*
 TODO
-- fix match finding in recent-match
-- 
+- add recent match opponent
 */
 
 // algorithm 1
