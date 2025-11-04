@@ -116,7 +116,9 @@ async function recentMatch(page, obj) {
                 // https://github.com/puppeteer/puppeteer/issues/489 
                 // documentation: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll 
                 // class="ssrcss-86dwvw-LetterContainer e1my5ar03", class="ssrcss-1d0kmun-LetterContainer e1my5ar03", class="ssrcss-1xnub2d-LetterContainer e1my5ar03"
-                const matches = row.querySelectorAll("div.ssrcss-86dwvw-LetterContainer, div.ssrcss-1xnub2-LetterContainer, div.ssrcss-1d0kmun-letterContainer");
+                // parent: "ssrss-sz8jv3-FormStatusContainer e1my5ar04"
+                // class: "visually-hidden ssrcss-1f39n02-VisuallyHidden e16en21z0"
+                const matches = row.querySelectorAll("div.");
                 const raw = matches.item(5);
                 const result = resultList[raw];
                 
