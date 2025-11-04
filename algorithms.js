@@ -115,6 +115,7 @@ async function recentMatch(page, obj) {
                 // select all <li> items per team; three possible class names
                 // https://github.com/puppeteer/puppeteer/issues/489 
                 // documentation: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll 
+                // class="ssrcss-86dwvw-LetterContainer e1my5ar03", class="ssrcss-1d0kmun-LetterContainer e1my5ar03", class="ssrcss-1xnub2d-LetterContainer e1my5ar03"
                 const matches = row.querySelectorAll("div.ssrcss-86dwvw-LetterContainer, div.ssrcss-1xnub2-LetterContainer, div.ssrcss-1d0kmun-letterContainer");
                 const raw = matches.item(5);
                 const result = resultList[raw];
