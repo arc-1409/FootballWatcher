@@ -112,7 +112,6 @@ async function recentMatch(page, obj) {
         await page.goto(url, { waitUntil: "networkidle2"});
         const teams = await page.$$eval("tr[class*='CellsRow']", rows => {
             return rows.map(row => {
-                // https://github.com/puppeteer/puppeteer/issues/489 
                 // documentation: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll 
                 // class="ssrcss-86dwvw-LetterContainer e1my5ar03", class="ssrcss-1d0kmun-LetterContainer e1my5ar03", class="ssrcss-1xnub2d-LetterContainer e1my5ar03"
                 // parent: "ssrss-sz8jv3-FormStatusContainer e1my5ar04"
