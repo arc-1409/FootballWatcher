@@ -118,9 +118,18 @@ async function recentMatch(page, obj) {
                 // class="ssrcss-86dwvw-LetterContainer e1my5ar03", class="ssrcss-1d0kmun-LetterContainer e1my5ar03", class="ssrcss-1xnub2d-LetterContainer e1my5ar03"
                 // parent: "ssrss-sz8jv3-FormStatusContainer e1my5ar04"
                 // class: "visually-hidden ssrcss-1f39n02-VisuallyHidden e16en21z0"
-                const matches = row.querySelectorAll("div.e1my5ar04 > span");
-                const raw = matches.item(5);
-                const result = resultList[raw];
+                // https://stackoverflow.com/questions/73251794/other-ways-to-pull-values-from-a-nodelist-of-html-elements 
+                const resultArray = [];
+                row.querySelectorAll("div.e1my5ar04 > span").forEach((el) => {
+                    resultArray.push(el);
+                });
+
+                let result = "win";
+                if(resultArray[5] === "Result Loss") {
+                    result = 'loss';
+                } else if (resultArray[5] === "Result Draw") {
+                    result = 'draw';
+                }
                 
                 let name = row.querySelector("span.visually-hidden")?.innerText.trim(); 
                 if (!name) {
