@@ -122,7 +122,7 @@ async function recentMatch(page, obj) {
                     resultArray.push(el.textContent.trim());
                 });
 
-                let result = "win";
+                let re = "win";
                 if(resultArray[5] === "Result Loss") {
                     result = 'loss';
                 } else if (resultArray[5] === "Result Draw") {
@@ -141,7 +141,7 @@ async function recentMatch(page, obj) {
 
         if(targetTeam) {
             console.log(`${obj.team}'s most recent game at ${leagueResult} with /team/ was a ${targetTeam.result}.`);
-            if (result === 'win') {
+            if (targetTeam.result === 'win') {
                 console.log("congratulations!");
             }
             found = true;
