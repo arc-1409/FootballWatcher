@@ -110,6 +110,7 @@ async function recentMatch(page, obj) {
 
     async function scrape(url, leagueResult) {
         await page.goto(url, { waitUntil: "networkidle2"});
+        let result = "win";
         const teams = await page.$$eval("tr[class*='CellsRow']", rows => {
             return rows.map(row => {
                 // documentation: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll 
@@ -122,7 +123,6 @@ async function recentMatch(page, obj) {
                     resultArray.push(el.textContent.trim());
                 });
 
-                let result = "win";
                 if(resultArray[5] === "Result Loss") {
                     result = 'loss';
                 } else if (resultArray[5] === "Result Draw") {
