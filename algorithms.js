@@ -129,18 +129,21 @@ async function recentMatch(page, obj) {
                     result = 'draw';
                 }
                 
+                const test = resultArray[5];
+
                 let name = row.querySelector("span.visually-hidden")?.innerText.trim(); 
                 if (!name) {
                     name = row.querySelector("span[aria-hidden='true'][data-600]")?.getAttribute("data-600")?.trim();
                 }
-                return { result, name };
+                return { result, name, test };
             });
         });
         
         const targetTeam = teams.find(t => t.name?.toLowerCase() === obj.team.toLowerCase());
 
         if(targetTeam) {
-            console.log(`${obj.team}'s most recent game at ${leagueResult} with /team/ was a ${targetTeam.result}.`);
+            console.log(`${obj.team}'s most recent game at ${leagueResult} with /team/ was a ${targetTeam.result}`);
+            console.log(`the actual result is ${targetTeam.test}`);
             if (targetTeam.result === 'win') {
                 console.log("congratulations!");
             }
