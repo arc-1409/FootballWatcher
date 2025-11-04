@@ -141,7 +141,7 @@ async function recentMatch(page, obj) {
         const targetTeam = teams.find(t => t.name?.toLowerCase() === obj.team.toLowerCase());
 
         if(targetTeam) {
-            console.log(`${obj.team}'s most recent game at ${leagueResult} with /team/ was a ${targetTeam.result}`);
+            console.log(`${obj.team}'s most recent game at ${leagueResult} was a ${targetTeam.result}`);
             if (targetTeam.result === 'win') {
                 console.log("congratulations!");
             }
