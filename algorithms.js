@@ -3,7 +3,8 @@ import { resultList } from "./lexicon.js";
 
 /*
 TODO
-- add recent match opponent
+- add recent match opponent & fixture
+- should recent-match return the most recent match, regardless of league, if there is no specified league?
 */
 
 // algorithm 1
@@ -77,19 +78,28 @@ async function recentMatch(page, obj) {
         console.error("ERROR: undefined teamName");
     }
 
+    /*
+    // sub algorithm 1:
+
+    1. extract obj.team 
+    2. get current year-month pair in this format: 2025-11
+    3. add obj.team to this url: https://www.bbc.com/sport/football/teams/arsenal/scores-fixtures/2025-11?filter=results
+    4. search for Premier League, La Liga, etc
+    5. search 2025-10, then 2025-09, until there is a most recent match in these specified leagues
+    6. find fixture and opponent
+    */
+
     let found = false;
 
-    // filter leagues
     if(obj.league === "Premier League") {
         await scrape("https://www.bbc.com/sport/football/premier-league/table", obj.league);
     } else if (obj.league === "La Liga") {
         await scrape("https://www.bbc.com/sport/football/spanish-la-liga/table", obj.league);
     } else if (obj.league === "German Bundesliga") {
         await scrape("https://www.bbc.com/sport/football/german-bundesliga/table", obj.league);
-    } else if (!obj.league) {  // for when league isn't specified, including undefined/""/doesn't exist. works better than !("league" in obj).
+    } else if (!obj.league) {  
         await scrape("https://www.bbc.com/sport/football/premier-league/table", "Premier League");
         
-        // divide each goto into one per if statement to avoid clashing
         if (found === false) {
             await timeout(500);        
             await scrape("https://www.bbc.com/sport/football/spanish-la-liga/table", "La Liga");
@@ -107,6 +117,7 @@ async function recentMatch(page, obj) {
         console.error("ERROR: unrecognized league name");
     }
 
+    // sub algorithm 2: 
     async function scrape(url, leagueResult) {
         await page.goto(url, { waitUntil: "networkidle2"});
         const teams = await page.$$eval("tr[class*='CellsRow']", rows => {
