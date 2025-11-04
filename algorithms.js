@@ -151,7 +151,7 @@ async function recentMatch(page, obj) {
                 console.log("congratulations!");
             }
             found = true;
-        }  // no need to close page; index.js does it already
+        } 
     }
 
     async function timeout(ms) {
