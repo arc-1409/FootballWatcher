@@ -86,7 +86,7 @@ async function recentMatch(page, obj) {
     3. add obj.team to this url: https://www.bbc.com/sport/football/teams/arsenal/scores-fixtures/2025-11?filter=results
     4. search for Premier League, La Liga, etc
     5. search 2025-10, then 2025-09, until there is a most recent match in these specified leagues
-    6. find fixture and opponent
+    6. find and output fixture, opponent, league, and match date
     */
 
     let found = false;
