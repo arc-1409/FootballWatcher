@@ -9,6 +9,7 @@ Try guessing which teams we support!
 ## ✨ Existing Features
 
 - Track your football teams' live rankings in Premier League, La Liga, and German Bundesliga
+- Look up the result of the team's most recent match
 
 ...and more to come in the future!
 
@@ -64,17 +65,16 @@ node index.js --help
 
 ## 🏁 5 Most Recent Updates
 
-- Resolved optional parameters passing into algorithms by passing objects instead of object properties individually (10 OCT 25)
-- Alogirhtm now accepts any combination of command arguments and options for user input (10 OCT 25)
-- Explored ASCII art for project title (11 OCT 25)
-- Added benchmarking to calculate code execution time (17 OCT 25)
+- Added new feature: look up most recent match's result (4 NOV 25)
 - Fixed error message that considers invalid team anme inputs, such as typos (17 OCT 25)
+- Added benchmarking to calculate code execution time (17 OCT 25)
+- Explored ASCII art for project title (11 OCT 25)
+- Alogirhtm now accepts any combination of command arguments and options for user input (10 OCT 25)
 
 ## ⏳ Future Features
 
 We plan to work on adding these features in the future, in no particular order yet:  
 
-- Most recent match result
 - Star favorite teams and leagues to follow-up
 - starting xi
 - league table look up
