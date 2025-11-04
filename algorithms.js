@@ -118,7 +118,7 @@ async function recentMatch(page, obj) {
                 // class="ssrcss-86dwvw-LetterContainer e1my5ar03", class="ssrcss-1d0kmun-LetterContainer e1my5ar03", class="ssrcss-1xnub2d-LetterContainer e1my5ar03"
                 // parent: "ssrss-sz8jv3-FormStatusContainer e1my5ar04"
                 // class: "visually-hidden ssrcss-1f39n02-VisuallyHidden e16en21z0"
-                const matches = row.querySelectorAll("div.");
+                const matches = row.querySelectorAll("div.e1my5ar04 > span");
                 const raw = matches.item(5);
                 const result = resultList[raw];
                 
