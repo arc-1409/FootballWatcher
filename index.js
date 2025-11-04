@@ -64,7 +64,7 @@ program
 program 
     .description("search for most recent match's results and opponent")
     .command("recent-match [team] [league]")
-    .action((teamArg) => {
+    .action((teamArg, leagueArg) => {
         let start = performance.now()
         const options = program.opts(); 
 
