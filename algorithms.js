@@ -91,34 +91,33 @@ async function recentMatch(page, obj) {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const urlmonth = `${year}-${month}`;
-    const url = "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${urlmonth}?filter=results";
-
-    
-
-    const intel = {
-        date: inteldate,
-        opponent: intelopp,
-        fixture: intelfix
-    }
+    const intelurl = "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${urlmonth}?filter=results";
 
     let found = false;
 
     if(obj.league === "Premier League") {
+        await scrapeIntel(url, obj.league);
         await scrapeResult("https://www.bbc.com/sport/football/premier-league/table", obj.league);
     } else if (obj.league === "La Liga") {
+                await scrapeIntel(url, obj.league);
+        await scrapeIntel(url, obj.league);
         await scrapeResult("https://www.bbc.com/sport/football/spanish-la-liga/table", obj.league);
     } else if (obj.league === "German Bundesliga") {
+        await scrapeIntel(url, obj.league);
         await scrapeResult("https://www.bbc.com/sport/football/german-bundesliga/table", obj.league);
-    } else if (!obj.league) {  
+    } else if (!obj.league) { 
+        await scrapeIntel(url, "Premier League");
         await scrapeResult("https://www.bbc.com/sport/football/premier-league/table", "Premier League");
         
         if (found === false) {
             await timeout(500);        
+            await scrapeIntel(url, "La Liga");
             await scrapeResult("https://www.bbc.com/sport/football/spanish-la-liga/table", "La Liga");
         }
 
         if (found === false) {
             await timeout(500);
+            await scrapeIntel(url, "German Bundesliga");
             await scrapeResult("https://www.bbc.com/sport/football/german-bundesliga/table", "German Bundesliga");
         }
 
@@ -127,6 +126,17 @@ async function recentMatch(page, obj) {
         }
     } else {
         console.error("ERROR: unrecognized league name");
+    }
+
+    // scrape algorithm 1
+    async function scrapeIntel(url, leagueResult) {
+        await page.goto(url, {waitUntil: "networkidle2"});
+
+        const intel = {
+            date: inteldate,
+            opponent: intelopp,
+            fixture: intelfix
+        };
     }
 
     // scrape algorithm 2
