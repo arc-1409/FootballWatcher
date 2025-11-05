@@ -93,6 +93,13 @@ async function recentMatch(page, obj) {
     let urlmonth = `${year}-${month}`;
     let intelurl = "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${urlmonth}?filter=results";
 
+    const time = {
+        year : year,
+        month : month,
+        formatted : urlmonth,
+        intelurl : intelurl
+    }
+
     let found = false;
 
     if(obj.league === "Premier League") {
@@ -126,6 +133,17 @@ async function recentMatch(page, obj) {
         }
     } else {
         console.error("ERROR: unrecognized league name");
+    }
+
+    async function updateUrl(time) {
+        while (!found) {
+            time.month -= 1;
+            if (time.month === 0) {
+                time.year -= 1;
+                time.month = 12;
+            }
+            time.fixture = `${time.year}-${time.month}`   
+        }
     }
 
     // scrape algorithm 1
