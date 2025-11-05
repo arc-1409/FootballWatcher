@@ -145,7 +145,7 @@ async function recentMatch(page, obj) {
         time.fixture = `${time.year}-${time.month}`;
         time.intelurl = "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${time.urlmonth}?filter=results";
 
-        }
+        scrapeIntel(time, leagueResult);
     }
 
     // scrape algorithm 1
