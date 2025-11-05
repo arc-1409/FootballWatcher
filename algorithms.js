@@ -136,13 +136,16 @@ async function recentMatch(page, obj) {
     }
 
     async function updateUrl(time) {
-        while (!found) {
+        if (!found) {
             time.month -= 1;
             if (time.month === 0) {
                 time.year -= 1;
                 time.month = 12;
             }
-            time.fixture = `${time.year}-${time.month}`   
+
+            time.fixture = `${time.year}-${time.month}`;
+            time.intelurl = "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${time.urlmonth}?filter=results";
+
         }
     }
 
