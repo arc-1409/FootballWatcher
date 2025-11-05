@@ -79,8 +79,6 @@ async function recentMatch(page, obj) {
     }
 
     /*
-    // sub algorithm 1:
-
     1. extract obj.team 
     2. get current year-month pair in this format: 2025-11
     3. add obj.team to this url: https://www.bbc.com/sport/football/teams/arsenal/scores-fixtures/2025-11?filter=results
@@ -88,6 +86,8 @@ async function recentMatch(page, obj) {
     5. search 2025-10, then 2025-09, until there is a most recent match in these specified leagues
     6. find and output fixture, opponent, league, and match date
     */
+
+
 
     let found = false;
 
@@ -117,7 +117,6 @@ async function recentMatch(page, obj) {
         console.error("ERROR: unrecognized league name");
     }
 
-    // sub algorithm 2: 
     async function scrape(url, leagueResult) {
         await page.goto(url, { waitUntil: "networkidle2"});
         const teams = await page.$$eval("tr[class*='CellsRow']", rows => {
