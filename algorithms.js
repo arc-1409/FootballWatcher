@@ -136,22 +136,21 @@ async function recentMatch(page, obj) {
     }
 
     async function updateUrl(time) {
-        if (!found) {
-            time.month -= 1;
-            if (time.month === 0) {
-                time.year -= 1;
-                time.month = 12;
-            }
+        time.month -= 1;
+        if (time.month === 0) {
+            time.year -= 1;
+            time.month = 12;
+        }
 
-            time.fixture = `${time.year}-${time.month}`;
-            time.intelurl = "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${time.urlmonth}?filter=results";
+        time.fixture = `${time.year}-${time.month}`;
+        time.intelurl = "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${time.urlmonth}?filter=results";
 
         }
     }
 
     // scrape algorithm 1
-    async function scrapeIntel(url, leagueResult) {
-        await page.goto(url, {waitUntil: "networkidle2"});
+    async function scrapeIntel(time, leagueResult) {
+        await page.goto(time.intelurl, {waitUntil: "networkidle2"});
 
         const intel = {
             date: inteldate,
