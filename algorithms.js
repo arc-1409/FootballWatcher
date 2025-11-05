@@ -152,6 +152,10 @@ async function recentMatch(page, obj) {
     async function scrapeIntel(time, leagueResult) {
         await page.goto(time.intelurl, {waitUntil: "networkidle2"});
 
+        if(!found) {
+            updateUrl(time);
+        }
+
         const intel = {
             date: inteldate,
             opponent: intelopp,
