@@ -104,22 +104,22 @@ async function recentMatch(page, obj) {
     let found = false;
 
     if(obj.league === "Premier League") {
-        await scrape("https://www.bbc.com/sport/football/premier-league/table", obj.league);
+        await scrapeResult("https://www.bbc.com/sport/football/premier-league/table", obj.league);
     } else if (obj.league === "La Liga") {
-        await scrape("https://www.bbc.com/sport/football/spanish-la-liga/table", obj.league);
+        await scrapeResult("https://www.bbc.com/sport/football/spanish-la-liga/table", obj.league);
     } else if (obj.league === "German Bundesliga") {
-        await scrape("https://www.bbc.com/sport/football/german-bundesliga/table", obj.league);
+        await scrapeResult("https://www.bbc.com/sport/football/german-bundesliga/table", obj.league);
     } else if (!obj.league) {  
-        await scrape("https://www.bbc.com/sport/football/premier-league/table", "Premier League");
+        await scrapeResult("https://www.bbc.com/sport/football/premier-league/table", "Premier League");
         
         if (found === false) {
             await timeout(500);        
-            await scrape("https://www.bbc.com/sport/football/spanish-la-liga/table", "La Liga");
+            await scrapeResult("https://www.bbc.com/sport/football/spanish-la-liga/table", "La Liga");
         }
 
         if (found === false) {
             await timeout(500);
-            await scrape("https://www.bbc.com/sport/football/german-bundesliga/table", "German Bundesliga");
+            await scrapeResult("https://www.bbc.com/sport/football/german-bundesliga/table", "German Bundesliga");
         }
 
         if (found === false) {
@@ -129,7 +129,8 @@ async function recentMatch(page, obj) {
         console.error("ERROR: unrecognized league name");
     }
 
-    async function scrape(url, leagueResult) {
+    // scrape algorithm 2
+    async function scrapeResult(url, leagueResult) {
         await page.goto(url, { waitUntil: "networkidle2"});
         const teams = await page.$$eval("tr[class*='CellsRow']", rows => {
             return rows.map(row => {
