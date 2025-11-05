@@ -87,7 +87,12 @@ async function recentMatch(page, obj) {
     6. find and output fixture, opponent, league, and match date
     */
 
-
+    const intel = {
+        url: "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${month}?filter=results",
+        date: "${date}",
+        opponent: "${opponent}",
+        fixture: "${fixture}"
+    }
 
     let found = false;
 
