@@ -171,8 +171,12 @@ async function recentMatch(page, obj) {
         await page.goto(time.intelurl, {waitUntil: "networkidle2"});
         const leaguesearch = await page.$$eval("class='ssrcss-7k0b15-HeaderWrapper'", rows => {
             return rows.map(row => {                                        // research: how is it a map?  
-                row.querySelector("")?.textContent.trim();
+                const league = row.querySelector("h3.ssrcss-137b0q4-SecondaryHeading")?.textContent.trim();
+                if (league != leagueResult) {
+                    updateUrl(time);
+                }
             })
+
         })
         if(!found) {
             updateUrl(time);
