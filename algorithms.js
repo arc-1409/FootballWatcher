@@ -178,9 +178,7 @@ async function recentMatch(page, obj) {
             })
 
         })
-        if(!found) {
-            updateUrl(time);
-        }
+
 
         const intel = {
             date: inteldate,
