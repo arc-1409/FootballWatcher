@@ -169,9 +169,9 @@ async function recentMatch(page, obj) {
 
     async function scrapeIntel(time, leagueResult) {
         await page.goto(time.intelurl, {waitUntil: "networkidle2"});
-        const leaguesearch = await page.$$eval("", rows => {
+        const leaguesearch = await page.$$eval("class='ssrcss-7k0b15-HeaderWrapper'", rows => {
             return rows.map(row => {                                        // research: how is it a map?  
-
+                row.querySelector("")?.textContent.trim();
             })
         })
         if(!found) {
