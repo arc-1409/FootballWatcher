@@ -87,6 +87,22 @@ async function recentMatch(page, obj) {
     6. find and output fixture, opponent, league, and match date
     */
 
+    /*
+    workflow
+    1. scrapeIntel runs with current time obj
+    2. scan for league names ("Premier League", "La Liga", "German Bundesliga")
+    3. continue the scrape if league name found
+        a. call updateURL if not found
+        b. modify link by yyyy-mm
+        c. update time obj
+        d. pass obj (with updated link) back to scrapeIntel
+        e. start from step 1.
+    4. find opponent name (bonus: three-letter code?)
+    5. find match date and convert to lowercase
+    6. find fixture and convert to (team - opponent) format
+    7. create intel obj and store date, opponent, fixture attributes
+    */
+
     const date = new Date();
     let year = date.getFullYear();
     let month = date.getMonth() + 1;
