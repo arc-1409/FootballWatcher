@@ -2,9 +2,10 @@ import puppeteer from "puppeteer";
 import { resultList } from "./lexicon.js";
 
 /*
-TODO
+TODO:
 - add recent match opponent & fixture
 - should recent-match return the most recent match, regardless of league, if there is no specified league?
+- get todo highlighted
 */
 
 // algorithm 1
@@ -154,7 +155,7 @@ async function recentMatch(page, obj) {
     workflow
     1. scrapeIntel runs with current time obj
     2. scan for league names ("Premier League", "La Liga", "German Bundesliga")
-    3. continue the scrape if league name found
+    3. check if league name found 
         a. call updateURL if not found
         b. modify link by yyyy-mm
         c. update time obj
@@ -168,7 +169,11 @@ async function recentMatch(page, obj) {
 
     async function scrapeIntel(time, leagueResult) {
         await page.goto(time.intelurl, {waitUntil: "networkidle2"});
+        const leaguesearch = await page.$$eval("", rows => {
+            return rows.map(row => {                                        // research: how is it a map?  
 
+            })
+        })
         if(!found) {
             updateUrl(time);
         }
