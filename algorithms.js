@@ -175,6 +175,8 @@ async function recentMatch(page, obj) {
                 if (league != leagueResult) {
                     updateUrl(time);
                 }
+
+                const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim();
                 return {inteldate, intelopp, intelfix};
 
             })
