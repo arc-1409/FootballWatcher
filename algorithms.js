@@ -177,17 +177,17 @@ async function recentMatch(page, obj) {
                 }
                 const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
                 const intelopp = row.querySelector("h3.ssrcss-c8w0oz-MobileValue")?.textContent.trim().toLowerCase();
-                
-                const intelcollection = page.$$eval("", columns => {        // research: no await?
+
+                const fix = page.$$eval("", columns => {        // research: no await?
                     return columns.map(column => {
                         
                         // two ways of getting fixture: search per 
-                        return {inteldate, intelopp};                       
+                        return {fixture};                       
                     })
                 });
                 
 
-                return {intelcollection};
+                return {inteldate, intelopp, fix};
 
             });
 
