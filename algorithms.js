@@ -176,13 +176,19 @@ async function recentMatch(page, obj) {
                     updateUrl(time);
                 }
 
-                const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
-                const intelopp = row.querySelector("h3.ssrcss-c8w0oz-MobileValue")?.textContent.trim().toLowerCase();
+                const intelcollection = await page.$$eval("", columns => {
+                    return columns.map(column => {
+                        const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
+                        const intelopp = row.querySelector("h3.ssrcss-c8w0oz-MobileValue")?.textContent.trim().toLowerCase();
+                    })
+                });
+                
+
                 return {inteldate, intelopp, intelfix};
 
-            })
+            });
 
-        })
+        });
 
 
         const intel = {
@@ -190,7 +196,7 @@ async function recentMatch(page, obj) {
             opponent: intelopp,
             fixture: intelfix
         };
-    }
+    };
 
     // scrape algorithm 2
     async function scrapeResult(url, leagueResult) {
@@ -232,6 +238,6 @@ async function recentMatch(page, obj) {
     async function timeout(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-}
+};
 
 export {searchStanding, recentMatch};
