@@ -176,15 +176,17 @@ async function recentMatch(page, obj) {
                     updateUrl(time);
                 }
 
-                const intelcollection = page.$$eval("", columns => {
+                const intelcollection = page.$$eval("", columns => {        // research: no await?
                     return columns.map(column => {
                         const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
                         const intelopp = row.querySelector("h3.ssrcss-c8w0oz-MobileValue")?.textContent.trim().toLowerCase();
+
+                        return {inteldate, intelopp};
                     })
                 });
                 
 
-                return {inteldate, intelopp, intelfix};
+                return {inteldate, inteldate, intelopp};
 
             });
 
