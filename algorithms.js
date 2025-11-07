@@ -169,7 +169,7 @@ async function recentMatch(page, obj) {
 
     async function scrapeIntel(time, leagueResult) {
         await page.goto(time.intelurl, {waitUntil: "networkidle2"});
-        const leaguesearch = await page.$$eval("class='ssrcss-7k0b15-HeaderWrapper'", rows => {
+        await page.$$eval("class='ssrcss-7k0b15-HeaderWrapper'", rows => {
             return rows.map(row => {                                        // research: how is it a map?  
                 const league = row.querySelector("h3.ssrcss-137b0q4-SecondaryHeading")?.textContent.trim();
                 if (league != leagueResult) {
@@ -187,14 +187,8 @@ async function recentMatch(page, obj) {
                 */
          
                 const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
-                const intelopp = row.querySelector("h3.ssrcss-c8w0oz-MobileValue")?.textContent.trim().toLowerCase();
-
-                const hometeam = page.$$eval("class='ssrcss-1ucldln-HomeTeam'", columns => {        // research: no await?
-                    return columns.map(column => {
-                        const team = column.querySelector("ssrcss-1p14tic-DesktopValue")?.textContent.trim();
-                return {fixture};                       
-                    })
-                });
+                const hometeam = column.querySelector("ssrcss-1p14tic-DesktopValue")?.textContent.trim();
+ 
 
                 const awayteam = page.$$eval("class=")
                 const homescore = column.querySelector("div.ssrcss-qsbptj-HomeScore")?.textContent.trim();
