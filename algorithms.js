@@ -179,13 +179,7 @@ async function recentMatch(page, obj) {
         });
 
         const intelsearch = await page.$$eval("class='ssrcss-1bjtunb-GridContainer'", rows => {
-            return rows.map(row => {
-                /* 
-                getting fixture two options: 
-                1. search hometeam's mobilevalue (name), withinlinefallback-scores' homescore and awayscore, and awayteam's mobilevalue
-                2. search span class="visually-hidden ssrcss-1f39n02-VisuallyHidden e16en2lz0, get substring: Arsenal 3 , Nottingham Forest 0 at Full time
-                */
-         
+            return rows.map(row => {       
                 const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
                 const hometeam = column.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
                 const awayteam = column.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
