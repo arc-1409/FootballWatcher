@@ -189,6 +189,8 @@ async function recentMatch(page, obj) {
             opponent: intelsearch.intelopp,
             fixture: intelsearch.fix.fixture
         };
+
+        return {intel};
     };
 
     // scrape algorithm 2
