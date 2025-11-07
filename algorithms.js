@@ -198,9 +198,9 @@ async function recentMatch(page, obj) {
             })
         })
         const intel = {
-            date: leaguesearch.inteldate,
-            opponent: leaguesearch.intelopp,
-            fixture: leaguesearch.fix.fixture
+            date: intelsearch.inteldate,
+            opponent: intelsearch.intelopp,
+            fixture: intelsearch.fix.fixture
         };
     };
 
