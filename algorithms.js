@@ -104,28 +104,28 @@ async function recentMatch(page, obj) {
     let found = false;
 
     if(obj.league === "Premier League") {
-        await scrapeIntel(url, obj.league);
+        await scrapeIntel(time, obj.league);
         await scrapeResult("https://www.bbc.com/sport/football/premier-league/table", obj.league);
     } else if (obj.league === "La Liga") {
                 await scrapeIntel(url, obj.league);
-        await scrapeIntel(url, obj.league);
+        await scrapeIntel(time, obj.league);
         await scrapeResult("https://www.bbc.com/sport/football/spanish-la-liga/table", obj.league);
     } else if (obj.league === "German Bundesliga") {
-        await scrapeIntel(url, obj.league);
+        await scrapeIntel(time, obj.league);
         await scrapeResult("https://www.bbc.com/sport/football/german-bundesliga/table", obj.league);
     } else if (!obj.league) { 
-        await scrapeIntel(url, "Premier League");
+        await scrapeIntel(time, "Premier League");
         await scrapeResult("https://www.bbc.com/sport/football/premier-league/table", "Premier League");
         
         if (found === false) {
             await timeout(500);        
-            await scrapeIntel(url, "La Liga");
+            await scrapeIntel(time, "La Liga");
             await scrapeResult("https://www.bbc.com/sport/football/spanish-la-liga/table", "La Liga");
         }
 
         if (found === false) {
             await timeout(500);
-            await scrapeIntel(url, "German Bundesliga");
+            await scrapeIntel(time, "German Bundesliga");
             await scrapeResult("https://www.bbc.com/sport/football/german-bundesliga/table", "German Bundesliga");
         }
 
