@@ -164,10 +164,10 @@ async function recentMatch(page, obj) {
                 const awayscore = row.querySelector("div.ssrcss-fri5a2-AwayScore")?.textContent.trim();
                 
                 let intelfixture = "${homescore} to ${awayscore}";
-                let intelopp = awayteam;
+                let intelopp = hometeam;
                 if(hometeam === obj.team) {
                     intelfixture = "${awayscore} to ${homescore}";
-                    intelopp = hometeam;
+                    intelopp = awayteam;
                 }
 
                 return {inteldate, intelopp, intelfixture};
