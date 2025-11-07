@@ -185,6 +185,8 @@ async function recentMatch(page, obj) {
 
                 const fix = page.$$eval("class='ssrcss-1bjtunb-GridContainer'", columns => {        // research: no await?
                     return columns.map(column => {
+                        const team1 = column.querySelector("ssrcss-1p14tic-DesktopValue")?.textContent.trim();
+                        const team2 = column.querySelector("")
                         const homescore = column.querySelector("div.ssrcss-qsbptj-HomeScore")?.textContent.trim();
                         const awayscore = column.querySelector("div.ssrcss-fri5a2-AwayScore")?.textContent.trim();
                         /* getting fixture two options: 
