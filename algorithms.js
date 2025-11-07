@@ -175,6 +175,11 @@ async function recentMatch(page, obj) {
                 if (league != leagueResult) {
                     updateUrl(time);
                 }
+            });
+        });
+
+        const intelsearch = await page.$$eval("", rows => {
+            return rows.map(row => {
                 const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
                 const intelopp = row.querySelector("h3.ssrcss-c8w0oz-MobileValue")?.textContent.trim().toLowerCase();
 
@@ -188,19 +193,14 @@ async function recentMatch(page, obj) {
                         return {fixture};                       
                     })
                 });
-                
 
                 return {inteldate, intelopp, fix};
-
-            });
-
-        });
-
-
+            })
+        })
         const intel = {
-            date: intelcollection.inteldate,
-            opponent: intelcollection.intelopp,
-            fixture: intelcollection.fixture
+            date: leaguesearch.inteldate,
+            opponent: leaguesearch.intelopp,
+            fixture: leaguesearch.fix.fixture
         };
     };
 
