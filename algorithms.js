@@ -77,15 +77,6 @@ async function recentMatch(page, obj) {
         console.error("ERROR: undefined teamName");
     }
 
-    /*
-    1. extract obj.team 
-    2. get current year-month pair in this format: 2025-11
-    3. add obj.team to this url: https://www.bbc.com/sport/football/teams/arsenal/scores-fixtures/2025-11?filter=results
-    4. search for Premier League, La Liga, etc
-    5. search 2025-10, then 2025-09, until there is a most recent match in these specified leagues
-    6. find and output fixture, opponent, league, and match date
-    */
-
     const date = new Date();
     let year = date.getFullYear();
     let month = date.getMonth() + 1;
@@ -162,7 +153,6 @@ async function recentMatch(page, obj) {
 
         const intelsearch = await page.$$eval("class='ssrcss-1bjtunb-GridContainer'", rows => {
             return rows.map(row => { 
-                // TODO: figure out how to scan for hometeam and awayteam using parent element      
                 const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
 
                 var home = row.querySelector("div.ssrcss-bon2fo-WithInLineFallBack-TeamHome");
