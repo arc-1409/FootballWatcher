@@ -181,7 +181,7 @@ async function recentMatch(page, obj) {
                         const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
                         const intelopp = row.querySelector("h3.ssrcss-c8w0oz-MobileValue")?.textContent.trim().toLowerCase();
 
-                        return {inteldate, intelopp};
+                        return {inteldate, intelopp};                       // test: does this go through to the scrapeintel return?
                     })
                 });
                 
