@@ -195,8 +195,8 @@ async function recentMatch(page, obj) {
 
         const intel = {
             date: inteldate,
-            opponent: intelopp,
-            fixture: intelfix
+            opponent: intelcollection.intelopp,
+            fixture: intelcollection.fixture
         };
     };
 
