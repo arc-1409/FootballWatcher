@@ -183,12 +183,9 @@ async function recentMatch(page, obj) {
                 const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
                 const intelopp = row.querySelector("h3.ssrcss-c8w0oz-MobileValue")?.textContent.trim().toLowerCase();
 
-                const fix = page.$$eval("class='ssrcss-1bjtunb-GridContainer'", columns => {        // research: no await?
+                const hometeam = page.$$eval("class='ssrcss-1ucldln-HomeTeam'", columns => {        // research: no await?
                     return columns.map(column => {
-                        const team1 = column.querySelector("ssrcss-1p14tic-DesktopValue")?.textContent.trim();
-                        const team2 = column.querySelector("")
-                        const homescore = column.querySelector("div.ssrcss-qsbptj-HomeScore")?.textContent.trim();
-                        const awayscore = column.querySelector("div.ssrcss-fri5a2-AwayScore")?.textContent.trim();
+                        const team = column.querySelector("ssrcss-1p14tic-DesktopValue")?.textContent.trim();
                         /* getting fixture two options: 
                         1. search hometeam's mobilevalue (name), withinlinefallback-scores' homescore and awayscore, and awayteam's mobilevalue
                         2. search span class="visually-hidden ssrcss-1f39n02-VisuallyHidden e16en2lz0, get substring: Arsenal 3 , Nottingham Forest 0 at Full time
@@ -196,6 +193,11 @@ async function recentMatch(page, obj) {
                         return {fixture};                       
                     })
                 });
+
+                const homescore = column.querySelector("div.ssrcss-qsbptj-HomeScore")?.textContent.trim();
+                const awayscore = column.querySelector("div.ssrcss-fri5a2-AwayScore")?.textContent.trim();
+                
+
 
                 return {inteldate, intelopp, fix};
             })
