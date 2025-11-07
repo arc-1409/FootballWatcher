@@ -181,7 +181,10 @@ async function recentMatch(page, obj) {
                 const fix = page.$$eval("", columns => {        // research: no await?
                     return columns.map(column => {
                         
-                        // two ways of getting fixture: search per 
+                        /* getting fixture two options: 
+                        1. search hometeam's mobilevalue (name), withinlinefallback-scores' homescore and awayscore, and awayteam's mobilevalue
+                        2. search span class="visually-hidden ssrcss-1f39n02-VisuallyHidden e16en2lz0, get substring: Arsenal 3 , Nottingham Forest 0 at Full time
+                        */
                         return {fixture};                       
                     })
                 });
