@@ -182,10 +182,14 @@ async function recentMatch(page, obj) {
             return rows.map(row => { 
                 // TODO: figure out how to scan for hometeam and awayteam using parent element      
                 const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
-                const hometeam = column.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
-                const awayteam = column.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
-                const homescore = column.querySelector("div.ssrcss-qsbptj-HomeScore")?.textContent.trim();
-                const awayscore = column.querySelector("div.ssrcss-fri5a2-AwayScore")?.textContent.trim();
+
+                var home = row.querySelector("div.ssrcss-bon2fo-WithInLineFallBack-TeamHome");
+                const hometeam = home.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
+
+                const hometeam = row.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
+                const awayteam = row.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
+                const homescore = row.querySelector("div.ssrcss-qsbptj-HomeScore")?.textContent.trim();
+                const awayscore = row.querySelector("div.ssrcss-fri5a2-AwayScore")?.textContent.trim();
                 
                 let intelfixture = "${homescore} to ${awayscore}";
                 let intelopp = awayteam;
