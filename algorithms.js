@@ -176,7 +176,7 @@ async function recentMatch(page, obj) {
                     updateUrl(time);
                 }
 
-                const intelcollection = await page.$$eval("", columns => {
+                const intelcollection = page.$$eval("", columns => {
                     return columns.map(column => {
                         const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
                         const intelopp = row.querySelector("h3.ssrcss-c8w0oz-MobileValue")?.textContent.trim().toLowerCase();
