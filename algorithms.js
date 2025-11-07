@@ -3,9 +3,7 @@ import { resultList } from "./lexicon.js";
 
 /*
 TODO:
-- add recent match opponent & fixture
-- should recent-match return the most recent match, regardless of league, if there is no specified league?
-- get todo highlighted
+- figure out how to pass intel from scrapeIntel to scrapeResult
 */
 
 // algorithm 1
