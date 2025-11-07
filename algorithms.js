@@ -136,6 +136,7 @@ async function recentMatch(page, obj) {
         console.error("ERROR: unrecognized league name");
     }
 
+    // mutual recursion 
     async function updateUrl(time) {
         time.month -= 1;
         if (time.month === 0) {
@@ -144,7 +145,7 @@ async function recentMatch(page, obj) {
         }
 
         time.fixture = `${time.year}-${time.month}`;
-        time.intelurl = "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${time.urlmonth}?filter=results";
+        time.intelurl = "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${time.urlmonth}";
 
         scrapeIntel(time, leagueResult);
     }
