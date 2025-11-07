@@ -179,7 +179,8 @@ async function recentMatch(page, obj) {
         });
 
         const intelsearch = await page.$$eval("class='ssrcss-1bjtunb-GridContainer'", rows => {
-            return rows.map(row => {       
+            return rows.map(row => { 
+                // TODO: figure out how to scan for hometeam and awayteam using parent element      
                 const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
                 const hometeam = column.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
                 const awayteam = column.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
