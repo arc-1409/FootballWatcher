@@ -176,7 +176,7 @@ async function recentMatch(page, obj) {
                     updateUrl(time);
                 }
 
-                const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim();
+                const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
                 return {inteldate, intelopp, intelfix};
 
             })
