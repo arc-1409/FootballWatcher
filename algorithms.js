@@ -186,7 +186,7 @@ async function recentMatch(page, obj) {
                 });
                 
 
-                return {inteldate, intelcollection};
+                return {intelcollection};
 
             });
 
@@ -194,7 +194,7 @@ async function recentMatch(page, obj) {
 
 
         const intel = {
-            date: inteldate,
+            date: intelcollection.inteldate,
             opponent: intelcollection.intelopp,
             fixture: intelcollection.fixture
         };
