@@ -175,6 +175,8 @@ async function recentMatch(page, obj) {
                 if (league != leagueResult) {
                     updateUrl(time);
                 }
+                return {inteldate, intelopp, intelfix};
+
             })
 
         })
