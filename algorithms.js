@@ -185,9 +185,9 @@ async function recentMatch(page, obj) {
 
                 var home = row.querySelector("div.ssrcss-bon2fo-WithInLineFallBack-TeamHome");
                 const hometeam = home.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
+                var away = row.querySelector("div.ssrcss-nvj22c-WithInLineFallBack-TeamAway");
+                const awayteam = away.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
 
-                const hometeam = row.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
-                const awayteam = row.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
                 const homescore = row.querySelector("div.ssrcss-qsbptj-HomeScore")?.textContent.trim();
                 const awayscore = row.querySelector("div.ssrcss-fri5a2-AwayScore")?.textContent.trim();
                 
