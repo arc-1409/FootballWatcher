@@ -187,16 +187,19 @@ async function recentMatch(page, obj) {
                 */
          
                 const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
-                const hometeam = column.querySelector("ssrcss-1p14tic-DesktopValue")?.textContent.trim();
- 
-
-                const awayteam = page.$$eval("class=")
+                const hometeam = column.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
+                const awayteam = column.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
                 const homescore = column.querySelector("div.ssrcss-qsbptj-HomeScore")?.textContent.trim();
                 const awayscore = column.querySelector("div.ssrcss-fri5a2-AwayScore")?.textContent.trim();
                 
+                let intelfixture = "${homescore} to ${awayscore}";
+                let intelopp = awayteam;
+                if(hometeam === obj.team) {
+                    intelfixture = "${awayscore} to ${homescore}";
+                    intelopp = hometeam;
+                }
 
-
-                return {inteldate, intelopp, fix};
+                return {inteldate, intelopp, intelfixture};
             })
         })
         const intel = {
