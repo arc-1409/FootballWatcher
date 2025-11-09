@@ -92,7 +92,7 @@ async function recentMatch(page, obj) {
 
     let found = false;
 
-    if(obj.league === "Premier League") {
+    if(obj.league === "Premier League") {           // TODO: pass scrapeintel to scraperesult?
         await scrapeIntel(time, obj.league);
         await scrapeResult("https://www.bbc.com/sport/football/premier-league/table", obj.league, scrapeIntel(time, obj.league));
     } else if (obj.league === "La Liga") {
