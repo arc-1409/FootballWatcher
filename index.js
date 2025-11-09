@@ -159,6 +159,7 @@ async function main(command, obj, start) {
             console.log(chalk.blue(figlet.textSync("Barca", {horizontalLayout:"full"})));
             console.log(`${redWord} ${blueWord}`); 
         }
+        
         if(obj.team === "Real Madrid") {
             const yellowWord = chalk.yellow("Hala Madrid!");
             console.log(`${yellowWord}`); 
