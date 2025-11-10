@@ -3,7 +3,7 @@ import { resultList } from "./lexicon.js";
 
 /*
 TODO:
-- figure out how to pass intel from scrapeIntel to scrapeResult
+- modify output message
 */
 
 // algorithm 1
