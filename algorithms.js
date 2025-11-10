@@ -95,26 +95,20 @@ async function recentMatch(page, obj) {
     if(obj.league === "Premier League") {           // TODO: pass scrapeintel to scraperesult?
         await scrapeResult("https://www.bbc.com/sport/football/premier-league/table", obj.league, scrapeIntel);
     } else if (obj.league === "La Liga") {
-                await scrapeIntel(url, obj.league);
-        await scrapeIntel(time, obj.league);
-        await scrapeResult("https://www.bbc.com/sport/football/spanish-la-liga/table", obj.league);
+        await scrapeResult("https://www.bbc.com/sport/football/spanish-la-liga/table", obj.league, scrapeIntel);
     } else if (obj.league === "German Bundesliga") {
-        await scrapeIntel(time, obj.league);
-        await scrapeResult("https://www.bbc.com/sport/football/german-bundesliga/table", obj.league);
+        await scrapeResult("https://www.bbc.com/sport/football/german-bundesliga/table", obj.league, scrapeIntel);
     } else if (!obj.league) { 
-        await scrapeIntel(time, "Premier League");
-        await scrapeResult("https://www.bbc.com/sport/football/premier-league/table", "Premier League");
+        await scrapeResult("https://www.bbc.com/sport/football/premier-league/table", "Premier League", scrapeIntel);
         
         if (found === false) {
             await timeout(500);        
-            await scrapeIntel(time, "La Liga");
-            await scrapeResult("https://www.bbc.com/sport/football/spanish-la-liga/table", "La Liga");
+            await scrapeResult("https://www.bbc.com/sport/football/spanish-la-liga/table", "La Liga", scrapeIntel);
         }
 
         if (found === false) {
             await timeout(500);
-            await scrapeIntel(time, "German Bundesliga");
-            await scrapeResult("https://www.bbc.com/sport/football/german-bundesliga/table", "German Bundesliga");
+            await scrapeResult("https://www.bbc.com/sport/football/german-bundesliga/table", "German Bundesliga", scrapeIntel);
         }
 
         if (found === false) {
