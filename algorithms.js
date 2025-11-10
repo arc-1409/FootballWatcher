@@ -84,10 +84,11 @@ async function recentMatch(page, obj) {
     let intelurl = "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${urlmonth}?filter=results";
 
     const time = {
-        year : year,
-        month : month,
-        formatted : urlmonth,
-        intelurl : intelurl
+        year: year,
+        month: month,
+        formatted: urlmonth,
+        intelurl: intelurl,
+        fixture: "null"
     }
 
     let found = false;
@@ -170,7 +171,7 @@ async function recentMatch(page, obj) {
         const intel = {
             date: intelsearch.inteldate,
             opponent: intelsearch.intelopp,
-            fixture: intelsearch.fixture
+            fixture: intelsearch.intelfixture
         };
 
         return {intel};
