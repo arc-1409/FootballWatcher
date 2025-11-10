@@ -204,6 +204,13 @@ async function recentMatch(page, obj) {
         });
         
         const targetTeam = teams.find(t => t.name?.toLowerCase() === obj.team.toLowerCase());
+        
+        let status = "won";
+        if(targetTeam.result === "draw") {
+            status = "tied";
+        } else if(targetTeam.result === "loss") {
+            status = "lost";
+        }
 
         if(targetTeam) {
             console.log(`${obj.team}'s most recent game on ${intel.date} at ${leagueResult} was a ${targetTeam.result}.`);
