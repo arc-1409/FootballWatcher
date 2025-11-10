@@ -178,6 +178,7 @@ async function recentMatch(page, obj) {
 
     // scrape algorithm 2
     async function scrapeResult(url, leagueResult) {
+        await scrapeIntel(time, leagueResult);
         await page.goto(url, { waitUntil: "networkidle2"});
         const teams = await page.$$eval("tr[class*='CellsRow']", rows => {
             return rows.map(row => {
