@@ -136,7 +136,7 @@ async function recentMatch(page, obj) {
 
         time.formatted = `${time.year}-${time.month}`;
         const team = obj.team;
-        const teamurl = team.replace(" ", "-").toLowerCase();                             // debug: original obj.team can't be put directly into the url
+        const teamurl = team.replace(" ", "-").toLowerCase();                             
         time.intelurl = `https://www.bbc.com/sport/football/teams/${teamurl}/scores-fixtures/${time.formatted}`;
 
         scrapeIntel(time, leagueResult);
@@ -147,14 +147,12 @@ async function recentMatch(page, obj) {
         await page.goto(time.intelurl, {waitUntil: "networkidle2"});
         await page.$$eval("div.ssrcss-7k0b15-HeaderWrapper", rows => {
             return rows.map(row => {                                        // research: how is it a map?  
-                const league = row.querySelector("h3.ssrcss-137b0q4-SecondaryHeading")?.textContent.trim();
+                const league = row.querySelector("h3.ssrcss-137b0q4-SecondaryHeading")?.textContent.trim();     // debug: typeerror cannot read properties of null (reading 'querySelector')
                 if (league != leagueResult) {
                     updateUrl(time);
                 }
             });
         });
-
-        console.log(time.intelurl);                          // test 4 result: url correct!!!!
 
         const intelsearch = await page.$$eval("div.ssrcss-1bjtunb-GridContainer", rows => {
             return rows.map(row => { 
