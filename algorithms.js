@@ -82,7 +82,7 @@ async function recentMatch(page, obj) {
     let month = date.getMonth() + 1;
     let formatted = `${year}-${month}`;
     const team = obj.team;
-    const teamurl = team.replace(" ", "-");
+    const teamurl = team.replace(" ", "-").toLowerCase();
     let intelurl = `https://www.bbc.com/sport/football/teams/${teamurl}/scores-fixtures/${formatted}?filter=results`;
 
     let time = {
@@ -136,7 +136,7 @@ async function recentMatch(page, obj) {
 
         time.formatted = `${time.year}-${time.month}`;
         const team = obj.team;
-        const teamurl = team.replace(" ", "-");                             // debug: original obj.team can't be put directly into the url
+        const teamurl = team.replace(" ", "-").toLowerCase();                             // debug: original obj.team can't be put directly into the url
         time.intelurl = `https://www.bbc.com/sport/football/teams/${teamurl}/scores-fixtures/${time.formatted}`;
 
         scrapeIntel(time, leagueResult);
