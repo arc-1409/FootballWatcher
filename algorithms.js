@@ -88,7 +88,7 @@ async function recentMatch(page, obj) {
     let time = {
         year: year,
         month: month,
-        formatted: urlmonth,
+        formatted: formatted,
         intelurl: intelurl,
     };
 
