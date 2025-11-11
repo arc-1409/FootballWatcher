@@ -132,8 +132,8 @@ async function recentMatch(page, obj) {
             time.month = 12;
         }
 
-        time.formatted = "${time.year}-${time.month}";
-        time.intelurl = "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${time.formatted}";
+        time.formatted = `${time.year}-${time.month}`;
+        time.intelurl = `https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${time.formatted}`;
 
         scrapeIntel(time, leagueResult);
     }
@@ -150,7 +150,7 @@ async function recentMatch(page, obj) {
             });
         });
 
-        console.log(time.intelurl);                          // test 3 result: the problem's with the url. intelurl takes ${obj.team} and ${}
+        console.log(time.intelurl);                          // test 3 result: the problem's with the url. intelurl takes ${obj.team} and ${time.formatted} literally
 
         const intelsearch = await page.$$eval("div.ssrcss-1bjtunb-GridContainer", rows => {
             return rows.map(row => { 
