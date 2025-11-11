@@ -80,8 +80,10 @@ async function recentMatch(page, obj) {
     const date = new Date();
     let year = date.getFullYear();
     let month = date.getMonth() + 1;
-    let urlmonth = `${year}-${month}`;
-    let intelurl = "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${urlmonth}?filter=results";
+    let formatted = `${year}-${month}`;
+    const team = obj.team;
+    const teamurl = team.replace(" ", "-");
+    let intelurl = `https://www.bbc.com/sport/football/teams/${teamurl}/scores-fixtures/${formatted}?filter=results`;
 
     let time = {
         year: year,
