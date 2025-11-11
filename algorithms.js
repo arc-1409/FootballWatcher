@@ -88,7 +88,11 @@ async function recentMatch(page, obj) {
         month: month,
         formatted: urlmonth,
         intelurl: intelurl,
-        fixture: "null"
+        fixture: ""
+    }
+
+    const intel = {
+        date: 
     }
 
     let found = false;
