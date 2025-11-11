@@ -83,7 +83,7 @@ async function recentMatch(page, obj) {
     let urlmonth = `${year}-${month}`;
     let intelurl = "https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${urlmonth}?filter=results";
 
-    const time = {
+    let time = {
         year: year,
         month: month,
         formatted: urlmonth,
@@ -91,7 +91,7 @@ async function recentMatch(page, obj) {
         fixture: ""
     };
 
-    const intel = {
+    let intel = {
         date: "",
         opponent: "",
         fixture: ""
@@ -170,6 +170,8 @@ async function recentMatch(page, obj) {
                     intelopp = awayteam;
                 }
 
+                console.log(inteldate);
+
                 return {inteldate, intelopp, intelfixture};
             })
         })
@@ -177,6 +179,7 @@ async function recentMatch(page, obj) {
         intel.date = intelsearch.inteldate;             // debug: both intelsearch.inteldate and intel.date are undefined?
         intel.opponent = intelsearch.intelopp;
         intel.fixture = intelsearch.intelfixture;
+        intel.date = "helooo";                          // test 2 result: scrapeIntel successfully passes intel values to the end, but scrape is unsuccessful
 
         return {intel};
     };
