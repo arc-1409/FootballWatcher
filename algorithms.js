@@ -140,7 +140,7 @@ async function recentMatch(page, obj) {
     }
 
     // scrape algorithm 1
-    async function scrapeIntel(time, leagueResult) {
+    async function scrapeIntel(time, intel, leagueResult) {
         await page.goto(time.intelurl, {waitUntil: "networkidle2"});
         await page.$$eval("div.ssrcss-7k0b15-HeaderWrapper", rows => {
             return rows.map(row => {                                        // research: how is it a map?  
@@ -184,7 +184,7 @@ async function recentMatch(page, obj) {
     };
 
     // scrape algorithm 2
-    async function scrapeResult(url, leagueResult) {
+    async function scrapeResult(url, time, intel, leagueResult) {
         await scrapeIntel(time, leagueResult);              // debug: should return intel; referenceerror intel is not defined
         await page.goto(url, { waitUntil: "networkidle2"});
         const teams = await page.$$eval("tr[class*='CellsRow']", rows => {
