@@ -174,11 +174,9 @@ async function recentMatch(page, obj) {
             })
         })
 
-        const intel = {
-            date: intelsearch.inteldate,
-            opponent: intelsearch.intelopp,
-            fixture: intelsearch.intelfixture
-        };
+            intel.date = intelsearch.inteldate;
+            intel.opponent = intelsearch.intelopp;
+            intel.fixture = intelsearch.intelfixture;
 
         return {intel};
     };
