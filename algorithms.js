@@ -154,7 +154,6 @@ async function recentMatch(page, obj) {
         const intelsearch = await page.$$eval("div.ssrcss-1bjtunb-GridContainer", rows => {
             return rows.map(row => { 
                 const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
-                console.log(inteldate);
 
                 var home = row.querySelector("div.ssrcss-bon2fo-WithInLineFallBack-TeamHome");
                 const hometeam = home.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
@@ -175,7 +174,7 @@ async function recentMatch(page, obj) {
             })
         })
 
-        intel.date = intelsearch.inteldate;
+        intel.date = intelsearch.inteldate;             // debug: both intelsearch.inteldate and intel.date are undefined?
         intel.opponent = intelsearch.intelopp;
         intel.fixture = intelsearch.intelfixture;
 
@@ -184,7 +183,7 @@ async function recentMatch(page, obj) {
 
     // scrape algorithm 2
     async function scrapeResult(url, time, intel, leagueResult, scrapeIntel) {
-        await scrapeIntel(time, intel, leagueResult);              
+        await scrapeIntel(time, intel, leagueResult);
         await page.goto(url, { waitUntil: "networkidle2"});
         const teams = await page.$$eval("tr[class*='CellsRow']", rows => {
             return rows.map(row => {
