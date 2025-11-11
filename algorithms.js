@@ -3,7 +3,7 @@ import { resultList } from "./lexicon.js";
 
 /*
 TODO:
-- modify output message
+- debug undefined fixture and opponent 
 */
 
 // algorithm 1
@@ -183,7 +183,7 @@ async function recentMatch(page, obj) {
 
     // scrape algorithm 2
     async function scrapeResult(url, time, intel, leagueResult, scrapeIntel) {
-        await scrapeIntel(time, intel, leagueResult);              // debug: should return intel; referenceerror intel is not defined
+        await scrapeIntel(time, intel, leagueResult);              
         await page.goto(url, { waitUntil: "networkidle2"});
         const teams = await page.$$eval("tr[class*='CellsRow']", rows => {
             return rows.map(row => {
@@ -219,7 +219,7 @@ async function recentMatch(page, obj) {
 
         if(targetTeam) {
             console.log(`${obj.team}'s most recent game (${intel.date}) at ${leagueResult} was a ${targetTeam.result}.`);
-            console.log(`they ${status} ${intel.fixture} against ${intel.opp}.`);
+            console.log(`they ${status} ${intel.fixture} against ${intel.opp}.`);                                               // debug: undefined fixture and opp
             if (targetTeam.result === 'win') {
                 console.log("congratulations!");
             }
