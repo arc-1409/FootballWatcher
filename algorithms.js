@@ -145,7 +145,7 @@ async function recentMatch(page, obj) {
             });
         });
 
-        const intelsearch = await page.$$eval("class='ssrcss-1bjtunb-GridContainer'", rows => {
+        const intelsearch = await page.$$eval("div.ssrcss-1bjtunb-GridContainer", rows => {
             return rows.map(row => { 
                 const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
 
