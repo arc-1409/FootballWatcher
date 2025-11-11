@@ -154,7 +154,7 @@ async function recentMatch(page, obj) {
             });
         });
 
-        console.log(time.intelurl);                          // test 3 result: the problem's with the url. intelurl takes ${obj.team} and ${time.formatted} literally
+        console.log(time.intelurl);                          // test 4 result: url correct!!!!
 
         const intelsearch = await page.$$eval("div.ssrcss-1bjtunb-GridContainer", rows => {
             return rows.map(row => { 
