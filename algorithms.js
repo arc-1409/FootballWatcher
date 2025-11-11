@@ -154,6 +154,7 @@ async function recentMatch(page, obj) {
         const intelsearch = await page.$$eval("div.ssrcss-1bjtunb-GridContainer", rows => {
             return rows.map(row => { 
                 const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
+                console.log(inteldate);
 
                 var home = row.querySelector("div.ssrcss-bon2fo-WithInLineFallBack-TeamHome");
                 const hometeam = home.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
@@ -174,9 +175,9 @@ async function recentMatch(page, obj) {
             })
         })
 
-            intel.date = intelsearch.inteldate;
-            intel.opponent = intelsearch.intelopp;
-            intel.fixture = intelsearch.intelfixture;
+        intel.date = intelsearch.inteldate;
+        intel.opponent = intelsearch.intelopp;
+        intel.fixture = intelsearch.intelfixture;
 
         return {intel};
     };
@@ -219,7 +220,7 @@ async function recentMatch(page, obj) {
 
         if(targetTeam) {
             console.log(`${obj.team}'s most recent game (${intel.date}) at ${leagueResult} was a ${targetTeam.result}.`);
-            console.log(`they ${status} ${intel.fixture} against ${intel.opponent}.`);                                               // debug: undefined fixture and opp
+            console.log(`They ${status} ${intel.fixture} against ${intel.opponent}.`);                                               // debug: undefined fixture and opp
             if (targetTeam.result === 'win') {
                 console.log("congratulations!");
             }
