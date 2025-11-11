@@ -133,7 +133,9 @@ async function recentMatch(page, obj) {
         }
 
         time.formatted = `${time.year}-${time.month}`;
-        time.intelurl = `https://www.bbc.com/sport/football/teams/${obj.team}/scores-fixtures/${time.formatted}`;
+        const team = obj.team;
+        const teamurl = team.replace(" ", "-");                             // debug: original obj.team can't be put directly into the url
+        time.intelurl = `https://www.bbc.com/sport/football/teams/${teamurl}/scores-fixtures/${time.formatted}`;
 
         scrapeIntel(time, leagueResult);
     }
