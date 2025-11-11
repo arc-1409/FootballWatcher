@@ -151,6 +151,8 @@ async function recentMatch(page, obj) {
             });
         });
 
+        console.log(time.url);          // test 3 result: the problem's with the url.
+
         const intelsearch = await page.$$eval("div.ssrcss-1bjtunb-GridContainer", rows => {
             return rows.map(row => { 
                 const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
