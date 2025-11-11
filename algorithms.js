@@ -219,7 +219,7 @@ async function recentMatch(page, obj) {
 
         if(targetTeam) {
             console.log(`${obj.team}'s most recent game (${intel.date}) at ${leagueResult} was a ${targetTeam.result}.`);
-            console.log(`they ${status} ${intel.fixture} against ${intel.opp}.`);                                               // debug: undefined fixture and opp
+            console.log(`they ${status} ${intel.fixture} against ${intel.opponent}.`);                                               // debug: undefined fixture and opp
             if (targetTeam.result === 'win') {
                 console.log("congratulations!");
             }
