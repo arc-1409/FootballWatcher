@@ -89,11 +89,13 @@ async function recentMatch(page, obj) {
         formatted: urlmonth,
         intelurl: intelurl,
         fixture: ""
-    }
+    };
 
     const intel = {
-        date: 
-    }
+        date: "",
+        opponent: "",
+        fixture: ""
+    };
 
     let found = false;
 
