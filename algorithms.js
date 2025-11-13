@@ -154,9 +154,17 @@ async function recentMatch(page, obj) {
             });
         });
 
+        let find = false;
+
         const intelsearch = await page.$$eval("div.ssrcss-1bjtunb-GridContainer", rows => {
             return rows.map(row => { 
-                const inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
+                let inteldate = row.querySelector("h2.ssrcss-12l0oeb-GroupHeader")?.textContent.trim().toLowerCase();
+
+                if (inteldate) {                // test 1 (nov 13)
+                    find = true;
+                } else {
+                    inteldate = "what";
+                }
 
                 var home = row.querySelector("div.ssrcss-bon2fo-WithInLineFallBack-TeamHome");
                 const hometeam = home.querySelector("span.ssrcss-1p14tic-DesktopValue")?.textContent.trim();
@@ -175,7 +183,7 @@ async function recentMatch(page, obj) {
 
                 console.log(inteldate);
 
-                return {inteldate, intelopp, intelfixture};
+                return {inteldate, intelopp, intelfixture, find};
             })
         })
 
@@ -183,6 +191,8 @@ async function recentMatch(page, obj) {
         intel.opponent = intelsearch.intelopp;
         intel.fixture = intelsearch.intelfixture;
         intel.date = "helooo";                          // test 2 result: scrapeIntel successfully passes intel values to the end, but scrape is unsuccessful
+        
+        console.log(find);                              // test 1 (nov 13)
 
         return {intel};
     };
