@@ -145,9 +145,9 @@ async function recentMatch(page, obj) {
     // scrape algorithm 1
     async function scrapeIntel(time, intel, leagueResult) {
         await page.goto(time.intelurl, {waitUntil: "networkidle2"});
-        await page.$$eval("div.ssrcss-7k0b15-HeaderWrapper", rows => {
+        await page.$$eval("div.ssrcss-7k0b15-HeaderWrapper", rows => {      // debug: pinpointed issue. type error: cannot read properties of null (reading 'queryselector')
             return rows.map(row => {                                        // research: how is it a map?  
-                const league = row.querySelector("h3.ssrcss-137b0q4-SecondaryHeading")?.textContent.trim();     // debug: typeerror cannot read properties of null (reading 'querySelector')
+                const league = row.querySelector("h3.ssrcss-137b0q4-SecondaryHeading")?.textContent.trim();     
                 if (league != leagueResult) {
                     updateUrl(time);
                 }
